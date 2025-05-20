@@ -21,11 +21,18 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
 
+
       - name: Login to DockerHub
         run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login --username ${{ secrets.USER_NAME_DOCKER }} --password-stdin
 
       - name: Build and test with Maven
         run: mvn clean verify --file ./simpleapi/pom.xml
+
+      - name: SonarCloud Scan
+        env:
+         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: mvn -B verify sonar:sonar -Dsonar.projectKey=foulou01_DevOps_FOURQUET -Dsonar.organization=foulou01 -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=${{ secrets.SONAR_TOKEN }}  --file ./simpleapi/pom.xml
+
 
   build-and-push-docker-image:
     needs: test-backend
