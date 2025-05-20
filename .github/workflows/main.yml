@@ -44,18 +44,18 @@ jobs:
         with:
           context: ./simpleapi
           tags: louisfrqt/simpleapi:latest
-          push: true
+          push: ${{ github.ref == 'refs/heads/main' }}
 
       - name: Build and push frontend image
         uses: docker/build-push-action@v6
         with:
           context: ./http-server
           tags: louisfrqt/my-apache:latest
-          push: true
+          push: ${{ github.ref == 'refs/heads/main' }}
 
       - name: Build and push database image
         uses: docker/build-push-action@v6
         with:
           context: ./my_db
           tags: louisfrqt/my_db:latest
-          push: true
+          push: ${{ github.ref == 'refs/heads/main' }}
