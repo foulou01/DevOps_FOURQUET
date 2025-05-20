@@ -1,0 +1,55 @@
+# 1. This docker-compose file defines a multi-container application with three services: db, simpleapi, and http-server.
+# 2. The 'db' service uses a PostgreSQL image, with credentials and database name set via environment variables and an external .env file.
+# 3. The database data is persisted using a named Docker volume 'db-data'.
+# 4. The 'simpleapi' service is built from a local directory and depends on the 'db' service to ensure the database is ready before starting.
+# 5. Both 'db' and 'simpleapi' services are connected to the 'app-network' Docker network for internal communication.
+# 6. The 'http-server' service is built from a local directory, exposes port 80, and depends on the 'simpleapi' service.
+# 7. Two custom networks, 'app-network' and 'app-network2', are defined to segment and control service communication.
+# 8. Restart policies are set for each service to control their behavior on failure or stop events.
+version: '3.8'
+services:
+  db:
+    image: 
+    environment:
+      POSTGRES_USER: usr
+      POSTGRES_PASSWORD: pwd
+      POSTGRES_DB: db
+    env_file: C:/Users/louis/OneDrive - Fondation EPF/DATA/DevOps/simpleapi/.env
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    networks:
+      - app-network
+    restart: unless-stopped
+
+  simpleapi:
+    build: C:\Users\louis\OneDrive - Fondation EPF\DATA\DevOps/simpleapi
+    image: simpleapi
+    container_name: ecstatic_satoshi
+    env_file: C:/Users/louis/OneDrive - Fondation EPF/DATA/DevOps/simpleapi/.env
+    networks:
+      - app-network
+      - app-network2
+    depends_on:
+      - db
+    restart: on-failure:3
+
+  
+
+  http-server:
+    build: C:/Users/louis/OneDrive - Fondation EPF/DATA/DevOps/http-server
+    image: my-apache
+    container_name: my-apache
+    ports:
+      - "80:80"
+    networks:
+      - app-network2
+    depends_on:
+      - simpleapi
+    restart: no
+
+networks:
+  app-network:
+  app-network2:
+
+volumes:
+  db-data:
