@@ -52,3 +52,10 @@ jobs:
           context: ./http-server
           tags: louisfrqt/my-apache:latest
           push: true
+
+      - name: Build and push database image
+        uses: docker/build-push-action@v6
+        with:
+          context: ./my_db
+          tags: louisfrqt/my_db:latest
+          push: true

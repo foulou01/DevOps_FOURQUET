@@ -9,12 +9,14 @@
 version: '3.8'
 services:
   db:
-    image: 
+    build: C:/Users/louis/OneDrive - Fondation EPF/DATA/DevOps/my_db
+    image: my_db
+    container_name: db
     environment:
       POSTGRES_USER: usr
       POSTGRES_PASSWORD: pwd
       POSTGRES_DB: db
-    env_file: C:/Users/louis/OneDrive - Fondation EPF/DATA/DevOps/simpleapi/.env
+    env_file: C:/Users/louis/OneDrive - Fondation EPF/DATA/DevOps/my_db/.env
     volumes:
       - db-data:/var/lib/postgresql/data
     networks:
@@ -45,7 +47,7 @@ services:
       - app-network2
     depends_on:
       - simpleapi
-    restart: no
+    restart: "no"
 
 networks:
   app-network:
