@@ -49,6 +49,6 @@ jobs:
       - name: Build and push frontend image
         uses: docker/build-push-action@v6
         with:
-          context: ./frontend
+          context: ./http-server
           tags: louisfrqt/my-apache:latest
           push: true
