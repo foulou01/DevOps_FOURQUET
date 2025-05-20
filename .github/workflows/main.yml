@@ -25,7 +25,7 @@ jobs:
         run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login --username ${{ secrets.USER_NAME_DOCKER }} --password-stdin
 
       - name: Build and test with Maven
-        run: mvn clean verify --file ./backend/pom.xml
+        run: mvn clean verify --file ./simpleapi/pom.xml
 
   build-and-push-docker-image:
     needs: test-backend
