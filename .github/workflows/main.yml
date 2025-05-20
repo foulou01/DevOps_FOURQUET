@@ -1,4 +1,4 @@
-# Ajoute ce job à ton fichier main.yml après le job test-backend
+# Ajoute ce job à ton fichier main.yml après le job test-backen
 build-and-push-docker-image:
   needs: test-backend
   runs-on: ubuntu-24.04
