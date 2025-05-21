@@ -1,4 +1,4 @@
-name: Continuous Deploy to Server
+name: continuous Deploy to Server
 
 on:
   workflow_run:
