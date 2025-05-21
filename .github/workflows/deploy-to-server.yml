@@ -2,7 +2,7 @@ name: Continuous Deploy to Server
 
 on:
   workflow_run:
-    workflows: ["Publish Images"]
+    workflows: ["CI devops 2025"]
     branches:
       - main
     types:
