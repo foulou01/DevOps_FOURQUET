@@ -1,0 +1,12 @@
+---
+# tasks file for roles/launch_database
+- name: Run database container without .env file
+  docker_container:
+    name: db
+    image: louisfrqt/my_db:latest
+    networks:
+      - name: app-network
+    restart_policy: unless-stopped
+    env_file: .env
+    volumes:
+      - db-data:/var/lib/postgresql/data

@@ -1,0 +1,11 @@
+---
+# tasks file for roles/launch_proxy
+- name: Run proxy container
+  docker_container:
+    name: my-apache
+    image: louisfrqt/my-apache:latest
+    networks:
+      - name: app-network2
+    ports:
+      - "80:80"
+    restart_policy: no

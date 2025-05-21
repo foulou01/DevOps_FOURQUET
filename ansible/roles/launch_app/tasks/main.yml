@@ -1,0 +1,12 @@
+---
+# tasks file for roles/launch_app
+- name: Run simpleapi container without .env file
+  docker_container:
+    name: ecstatic_satoshi
+    image: louisfrqt/simpleapi:latest
+    networks:
+      - name: app-network
+      - name: app-network2
+    restart_policy: on-failure
+    restart_retries: 3
+    env_file: .env

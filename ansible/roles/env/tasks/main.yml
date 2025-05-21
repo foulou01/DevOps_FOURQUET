@@ -1,0 +1,7 @@
+---
+# tasks file for roles/env
+
+- name: Copy env file
+  copy:
+    src: files/.env
+    dest: .env
