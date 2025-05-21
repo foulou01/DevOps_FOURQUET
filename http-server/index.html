@@ -1,8 +1,21 @@
 <!DOCTYPE html>
-<html>
-<head><meta charset="UTF-8"><title>Welcome</title></head>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Déploiement réussi !</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; margin-top: 10vh; }
+    .date { color: #2c3e50; font-size: 1.2em; margin-top: 20px; }
+  </style>
+</head>
 <body>
-  <h1>My App Gateway</h1>
-  <p>All requests are reverse-proxied to the backend.</p>
+  <h1>Déploiement réussi depuis GitHub Actions ! 🚀</h1>
+  <div class="date">
+    Dernier déploiement : <span id="deploy-date"></span>
+  </div>
+  <script>
+    // Affiche la date/heure actuelle côté client
+    document.getElementById('deploy-date').textContent = new Date().toLocaleString('fr-FR');
+  </script>
 </body>
 </html>
