@@ -4,7 +4,6 @@
   docker_container:
     name: db
     image: louisfrqt/my_db:latest
-    pull: yes
     networks:
       - name: app-network
     restart_policy: unless-stopped
