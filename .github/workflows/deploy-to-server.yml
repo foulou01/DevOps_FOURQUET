@@ -10,7 +10,7 @@ on:
 
 
 jobs:
-  deploy: 
+  deploy:
     runs-on: ubuntu-24.04
 
     steps:
@@ -40,4 +40,4 @@ jobs:
         env:
           ANSIBLE_HOST_KEY_CHECKING: "False"
         run: |
-          ansible-playbook -i ansible/inventories/setup.yml  ansible/playbook.yml 
+          ansible-playbook -i ansible/inventories/setup.yml  ansible/playbook.yml  
