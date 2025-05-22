@@ -4,6 +4,7 @@
   docker_container:
     name: my-apache
     image: louisfrqt/my-apache:latest
+    pull: yes
     networks:
       - name: app-network2
     ports:

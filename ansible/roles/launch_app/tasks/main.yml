@@ -4,6 +4,7 @@
   docker_container:
     name: ecstatic_satoshi
     image: louisfrqt/simpleapi:latest
+    pull: yes
     networks:
       - name: app-network
       - name: app-network2
